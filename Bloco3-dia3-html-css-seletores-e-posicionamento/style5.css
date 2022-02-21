@@ -1,0 +1,41 @@
+.lista-ordenada{
+    background-color: yellow;
+}
+
+.cor-font-par{
+    color: green;
+}
+
+.cor-font-impar{
+    text-transform: uppercase;
+}
+
+h1, h2, h3{
+    color: red;
+}
+
+h1{
+    font-size: 40px;
+    border: 1px black solid;
+}
+
+li{
+    font-size: 20px;
+}
+
+span{
+    font-weight: bold;
+}
+
+.cor-font-blue, .cor-font-blue2{
+    color: blue;
+}
+
+.cor-font-blue{
+    background-color: pink;
+}
+
+ul.negrito li:hover{
+    font-weight: bold;
+    color: black;
+}

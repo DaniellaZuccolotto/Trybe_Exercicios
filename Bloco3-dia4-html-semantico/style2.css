@@ -1,0 +1,77 @@
+h1{
+    color: green;
+    margin-top: 0;
+    letter-spacing: -1px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    font-size: 50px;
+}
+
+#nav{
+    background-image: url(images/paratitulo.jpg);
+    background-size: cover;
+    background-position: 50% 25%;
+    padding: 250px 50px 200px;
+}
+
+body{
+    color: white;
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#nav li{
+    font-size: 20px;
+    color: rgb(223, 223, 128);
+}
+
+#titleone{
+    line-height: 40px;
+    font-size: 30px;
+    color: blueviolet;
+}
+
+#article1{
+    text-align: center;
+    padding: 30px;
+}
+
+.section{
+    padding: 10px 200px;
+    color: rgb(137, 137, 216);
+    text-align: center;
+}
+
+#visao, #caract, #tamanho{
+    width: 350px;
+    height: 200px;
+}
+
+.aside{
+    color: aquamarine;
+    margin-left: 40%;
+}
+
+.subsection{
+    display: inline-block;
+    width: 20%;
+    margin: 10px;
+    padding: 15px;
+    margin-left: 10px;
+    color: rgb(252, 122, 122);
+    text-align: center;
+}
+
+#article-inter{
+    margin-left: 20%;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+#article-inter #subcaract{
+    margin-top: 100px;
+}

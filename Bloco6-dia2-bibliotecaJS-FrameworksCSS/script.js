@@ -1,43 +1,102 @@
-const buttonEnviar = document.querySelector('#button-submit');
-const inputImage = document.querySelector('#input-concordo');
 
-function textInputValidation() {
-  const email = document.querySelector('#input-email').value.length;
-  const invalidEmail = email < 10 || email > 50;
-  console.log(email);
+const validate = new JustValidate(
+  '#form', 
+  {
+    errorFieldCssClass: 'is-invalid',
+    errorFieldStyle: {
+      border: '1px solid red',
+    },
+    errorLabelCssClass: 'is-label-invalid',
+    errorLabelStyle: {
+      color: 'red',
+      textDecoration: 'underlined',
+    },
+    focusInvalidField: true,
+    lockForm: true,
+    tooltip: {
+      position: 'top',
+    },
+  },
+);
 
-  const name = document.querySelector('#input-name').value.length;
-  const invalidName = name < 10 || name > 40;
-  console.log(name);
-
-  const reason = document.querySelector('#text-area').value.length;
-  const invalidReason = reason > 500;
-  console.log(reason);
-
-  if (invalidEmail || invalidName || invalidReason) {
-    return false;
-  }
-  else {
-    return true;
-  }
+function enableSubmit() {
+  const submitBtn = document.querySelector('#button-submit');
+  const agreement = document.querySelector('#input-concordo');
+  submitBtn.disabled = !agreement.checked;
 }
 
 
-function checkInput(event) {
-  const validation = textInputValidation();
-  console.log(validation);
-  if (inputImage.checked === false) {
-    alert('Precisamos da autorizacao para uso das imagens');
-    event.preventDefault();
-  } else if ( validation === false) {
-    alert('Dados Invalidos');
-    event.preventDefault();
-  } else {
-    alert('Dados enviados com sucesso! Obrigado por participar do concurso TrybeTrip.')
+const picker = new Pikaday({
+  field: document.getElementById('datepicker'),
+  format: 'DD/MM/YYYY',
+  toString(date, format) {
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+  },
+  parse(dateString, format) {
+      const parts = dateString.split('/');
+      const day = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1;
+      const year = parseInt(parts[2], 10);
+      return new Date(year, month, day);
   }
-  console.log(inputImage.checked);
-}
+});
 
-buttonEnviar.addEventListener('click', checkInput);
+validate
+  .addField('#fullName', [
+    {
+      rule: 'required',
+      errorMessage: 'O campo de nome é obrigatório.',
+    },
+    {
+      rule: 'maxLength',
+      value: 40,
+      errorMessage: 'O limite é de 40 caracteres.',
+    },
+    {
+      rule: 'minLength',
+      value: 10,
+      errorMessage: 'O mínimo é de 10 caracteres.',
+    },
+  ])
+  .addField('#email', [
+    {
+      rule: 'required',
+      errorMessage: 'O campo de email é obrigatório.',
+    },
+    {
+      rule: 'email',
+      errorMessage: 'O email digitado não é válido.',
+    },
+    {
+      rule: 'maxLength',
+      value: 50,
+      errorMessage: 'O limite é de 50 caracteres.',
+    },
+  ])
+  .addField('#why', [
+    {
+      rule: 'required',
+      errorMessage: 'O campo de resposta é obrigatório.',
+    },
+    {
+      rule: 'maxLength',
+      value: 500,
+      errorMessage: 'O limite é de 500 caracteres',
+    },
+  ])
+  .addField('#date', [
+    {
+      rule: 'required',
+      errorMessage: 'O campo de data é obrigatório.',
+    },
+  ]);
 
-document.getElementById('input-data').DatePickerX.init();
+window.onload = function() {
+  const clearBtn = document.querySelector('#clear-btn');
+  clearBtn.addEventListener('click', clearFields);
+  const agreement = document.querySelector('#agreement');
+  agreement.addEventListener('change', enableSubmit);
+};

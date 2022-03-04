@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="botao">Clique Aqui</button>
+  <h2>Esse Botão já foi clicado:</h2>
+  <h2 id="vezes"></h2>
+  <script>
+    const botao = document.querySelector('#botao');
+    const vezes = document.querySelector('#vezes');
+    let contar = 0;
+
+    botao.addEventListener('click', () => {
+      vezes.innerHTML = contar += 1;
+    })
+  </script>
+</body>
+
+</html>

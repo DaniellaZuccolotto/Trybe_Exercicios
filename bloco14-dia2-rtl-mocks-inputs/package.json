@@ -1,0 +1,15 @@
+{
+  "name": "bloco14-dia2-rtl-mocks-inputs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^28.0.3"
+  }
+}

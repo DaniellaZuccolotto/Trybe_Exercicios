@@ -1,0 +1,75 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+class FormDataDisplay extends Component {
+  render() {
+    const { personal, professional } = this.props;
+    const { nome, email, cpf, endereco, cidade, estado } = personal;
+    const { curriculo, cargo, descricao } = professional;
+    return (
+      <div>
+        <h2>Dados enviados</h2>
+        <div>
+          Nome:
+          { nome }
+        </div>
+        <div>
+          Email:
+          { email }
+        </div>
+        <div>
+          CPF:
+          { cpf }
+        </div>
+        <div>
+          Endereço:
+          { endereco }
+        </div>
+        <div>
+          Cidade:
+          { cidade }
+        </div>
+        <div>
+          Estado:
+          { estado }
+        </div>
+        <div>
+          Currículo:
+          { curriculo }
+        </div>
+        <div>
+          Cargo:
+          { cargo }
+        </div>
+        <div>
+          Descrição do cargo:
+          { descricao }
+        </div>
+      </div>
+    );
+  }
+}
+
+FormDataDisplay.propTypes = {
+  personal: PropTypes.shape({
+    nome: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    cpf: PropTypes.string.isRequired,
+    endereco: PropTypes.string.isRequired,
+    cidade: PropTypes.string.isRequired,
+    estado: PropTypes.string.isRequired,
+  }).isRequired,
+  professional: PropTypes.shape({
+    curriculo: PropTypes.string.isRequired,
+    cargo: PropTypes.string.isRequired,
+    descricao: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  personal: state.personalReducer,
+  professional: state.professionalReducer,
+});
+
+export default connect(mapStateToProps)(FormDataDisplay);
